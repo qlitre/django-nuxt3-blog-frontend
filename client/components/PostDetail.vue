@@ -75,11 +75,6 @@ strong {
     border: solid 1px #ccc;
 }
 
-@media (max-width: 1024px) {
-    .markdown-body:deep(img) {
-        max-width: 100%;
-    }
-}
 
 .markdown-body:deep(p) code {
     background-color: #DBDDDA;
@@ -103,7 +98,7 @@ pre:deep(*) {
     font-weight: lighter;
 }
 
-blockquote {
+.markdown-body:deep(blockquote) {
     padding: 15px;
     border-left: 5px solid #ccc;
     border-radius: 2px;
@@ -142,23 +137,23 @@ blockquote {
     opacity: .5;
 }
 
-ul,
-ol {
+.markdown-body:deep(ul),
+.markdown-body:deep(ol) {
     padding-left: 1.5em;
     margin: 1rem 0;
     line-height: 1.7;
 }
 
-ul {
+.markdown-body:deep(ul) {
     list-style-type: disc;
 }
 
-ol {
+.markdown-body:deep(ol) {
     list-style-type: decimal;
 }
 
-ul:deep(li),
-ol:deep(li) {
+.markdown-body:deep(ul:deep(li)),
+.markdown-body:deep(ol:deep(li)) {
     margin-bottom: 1rem;
 }
 </style>

@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import { createCommonJS } from 'mlly'
 const { __dirname } = createCommonJS(import.meta.url)
 
-const { BASE_URL, API_KEY } = process.env;
+const { BASE_URL, API_KEY, API_KEY_DEV } = process.env;
 
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     ssr: true,
     privateRuntimeConfig: {
         baseUrl: process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:8000' : BASE_URL,
-        apiKey: API_KEY
+        apiKey: process.env.NODE_ENV !== 'production' ? API_KEY_DEV : API_KEY,
     },
     publicRuntimeConfig: {
         siteUrl: 'https://roaring-gelato-42d6f2.netlify.app',

@@ -95,7 +95,7 @@ pre:deep(*) {
   font-weight: lighter;
 }
 
-blockquote {
+blockquote p {
   padding: 15px;
   border-left: 5px solid #ccc;
   border-radius: 2px;
