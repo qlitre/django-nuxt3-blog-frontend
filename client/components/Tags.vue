@@ -16,7 +16,7 @@ const props = defineProps({
         <ul>
             <li v-for="tag in tags" :key="tag.id" class="list">
                 <nuxt-link :to="`/tag/${tag.slug}/page/1`" class="link">
-                    {{ tag.name }}
+                    {{ tag.name }} ({{ tag.post_count }})
                 </nuxt-link>
             </li>
         </ul>

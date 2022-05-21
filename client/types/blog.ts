@@ -2,12 +2,14 @@ export type Category = {
     id: string
     name: string
     slug: string
+    post_count: number
 }
 
 export type Tag = {
     id: string
     name: string
     slug: string
+    post_count: number
 }
 
 export type CategoryList = Array<Category>
@@ -28,8 +30,6 @@ export type Post = {
 }
 
 export type PostList = Array<Post>
-
-
 
 export type PostResponce = {
     next: string

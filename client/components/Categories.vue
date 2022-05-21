@@ -15,7 +15,7 @@ const props = defineProps({
         <ul>
             <li v-for="category in categories" :key="category.id" class="list">
                 <nuxt-link :to="`/category/${category.slug}/page/1`" class="link">
-                    {{ category.name }}
+                    {{ category.name }} ({{ category.post_count }})
                 </nuxt-link>
             </li>
         </ul>
