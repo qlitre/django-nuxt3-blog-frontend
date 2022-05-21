@@ -1,58 +1,41 @@
+<script setup lang="ts">
+const { drawer } = useDrawer()
+
+function toHome() {
+  return navigateTo({
+    path: `/`,
+  })
+};
+
+</script>
+
 <template>
-  <header class="header wrapper">
-    <NuxtLink :to='`/`'>
-      <h1 class="title">
-        Qlitre's Life
-      </h1>
-    </NuxtLink>
-    <nav class="nav">
-      <ul class="main-nav">
-        <li>
-          <NuxtLink :to="`/about`">
-            About
-          </NuxtLink>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <v-app-bar color="teal-darken-4" image="https://picsum.photos/1920/1080?random">
+    <template v-slot:image>
+      <v-img gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"></v-img>
+    </template>
+
+    <template v-slot:prepend>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </template>
+
+    <v-app-bar-title>Qlitre's Life</v-app-bar-title>
+
+    <v-spacer></v-spacer>
+
+    <v-btn icon :to="`/`">
+      <v-icon>
+        fa fa-home
+      </v-icon>
+
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>fa fa-search</v-icon>
+    </v-btn>
+    <v-btn icon :href="`https://github.com/qlitre`" target="_blank">
+      <v-icon>fab fa-github</v-icon>
+    </v-btn>
+  </v-app-bar>
+
 </template>
-
-<style scoped>
-.header {
-  padding: 20px 10% 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #EDEDE8;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-}
-
-
-.title {
-  font-size: 2.4rem;
-  color: #888;
-  margin: 0;
-  padding: 0;
-}
-
-.main-nav {
-  list-style: none;
-  margin: 0;
-  display: flex;
-}
-
-.main-nav li {
-  margin: 0 0 0 30px;
-  font-size: 1.8rem;
-}
-
-.main-nav a {
-  color: #888;
-}
-
-.main-nav a:hover {
-  opacity: 0.6;
-}
-</style>

@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    css: ["vuetify/lib/styles/main.sass"],
+    css: ["vuetify/lib/styles/main.sass",],
     build: {
         transpile: ["vuetify"],
     },

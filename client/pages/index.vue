@@ -49,21 +49,16 @@ useHead({
 </script>
 
 <template>
-    <div>
-        <div class="divider">
-            <section class="container">
-                <Breadcrumb :category="category" :tag="tag" />
-                <Posts :posts="posts.results" />
-            </section>
-            <aside class="aside">
-                <SearchForm />
-                <Categories :categories="categories" />
-                <Tags :tags="tags" />
-            </aside>
-        </div>
+    <v-container>
+        <Breadcrumb :category="category" :tag="tag" />
+        <Posts :posts="posts.results" />
+
+        <Categories :categories="categories" />
+        <Tags :tags="tags" />
         <Pagination :totalPages="posts.total_pages" :currentPage="page" :categorySlug="categorySlug"
             :tagSlug="tagSlug" />
-    </div>
+
+    </v-container>
 </template>
 
 <style scoped>
