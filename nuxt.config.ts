@@ -22,7 +22,16 @@ export default defineNuxtConfig({
     link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    css: ['@/assets/css/reset.css', '@/assets/css/style.css', '@/assets/css/root.css',],
+    css: ["vuetify/lib/styles/main.sass"],
+    build: {
+        transpile: ["vuetify"],
+    },
+    vite: {
+        define: {
+            "process.env.DEBUG": false,
+        },
+    },
+    //css: ['@/assets/css/reset.css', '@/assets/css/style.css', '@/assets/css/root.css',],
     hooks: {
         'pages:extend'(pages) {
             pages.push({
