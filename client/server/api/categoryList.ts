@@ -1,10 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'http'
-
-const ctx = useRuntimeConfig()
-const headers = { 'X-Api-Key': ctx.apiKey }
+import { CategoryList } from '~~/client/types/blog'
+import { client } from './client'
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
-    const ctx = useRuntimeConfig();
-    const data = await $fetch(`${ctx.baseUrl}/api/blog/categories/`, { headers: headers })
-    return data
+    return client().getList<CategoryList>({ endpoint: '/api/blog/categories/' })
 }

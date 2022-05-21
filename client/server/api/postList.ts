@@ -1,12 +1,10 @@
 import type { IncomingMessage, ServerResponse } from 'http'
 import * as url from "url";
+import { PostList } from '~~/client/types/blog';
+import { client } from './client'
 
-const ctx = useRuntimeConfig()
-const headers = { 'X-Api-Key': ctx.apiKey }
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
-    const ctx = useRuntimeConfig();
     const params = url.parse(req.url as string, true).query
-    const data = await $fetch(`${ctx.baseUrl}/api/blog/posts/`, { params: params,headers:headers })
-    return data
+    return client().getList<PostList>({ endpoint: '/api/blog/posts/', queries: params })
 }
