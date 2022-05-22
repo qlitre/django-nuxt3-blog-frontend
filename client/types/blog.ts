@@ -31,7 +31,7 @@ export type Post = {
 
 export type PostList = Array<Post>
 
-export type PostResponce = {
+export type PostResponse = {
     next: string
     previous: string
     total_pages: number

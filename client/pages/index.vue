@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Category, Tag, CategoryList, TagList, PostResponce } from '../types/blog'
+import { Category, Tag, CategoryList, TagList, PostResponse } from '../types/blog'
 
 const ctx = useRuntimeConfig();
 const route = useRoute()
@@ -13,17 +13,17 @@ const params = {
     page: page
 }
 
-const { data: posts, refresh } = await useFetch<PostResponce>('/api/postList', { params: params })
+const { data: posts, refresh } = await useFetch<PostResponse>('/api/postList', { params: params })
 const { data: categories } = await useFetch<CategoryList>('/api/categoryList')
 const { data: tags } = await useFetch<TagList>('/api/tagList')
 
 const category: Category =
     categorySlug !== '' ?
-        categories.value.find((content) => content.slug === categorySlug) : { id: '', name: '', slug: '' };
+        categories.value.find((content) => content.slug === categorySlug) : { id: '', name: '', slug: '', post_count: 0 };
 
 const tag: Tag =
     tagSlug !== '' ?
-        tags.value.find((content) => content.slug === tagSlug) : { id: '', name: '', slug: '' };
+        tags.value.find((content) => content.slug === tagSlug) : { id: '', name: '', slug: '', post_count: 0 };
 
 useHead({
     title: ctx.siteName,
