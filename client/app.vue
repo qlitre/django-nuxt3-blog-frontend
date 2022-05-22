@@ -4,24 +4,20 @@ export default {
   data: () => ({ drawer: null }),
 }
 </script>
+
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
-      <!--  -->
-    </v-navigation-drawer>
-
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Application</v-toolbar-title>
-    </v-app-bar>
-
-    <v-main>
-      <!--  -->
+    <Header />
+    <v-main class="bg-main">
+      <NuxtPage></NuxtPage>
     </v-main>
   </v-app>
 </template>
 <style>
+.bg-main {
+  background-color: #edede8;
+}
+
 .page-enter-from {
   opacity: 0;
   transform: translateY(-10px);

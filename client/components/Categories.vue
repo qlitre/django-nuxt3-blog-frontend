@@ -10,41 +10,15 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="wrapper">
-        <h1 class="pageTitle">カテゴリー</h1>
-        <ul>
-            <li v-for="category in categories" :key="category.id" class="list">
-                <nuxt-link :to="`/category/${category.slug}/page/1`" class="link">
-                    {{ category.name }} ({{ category.post_count }})
-                </nuxt-link>
-            </li>
-        </ul>
-    </div>
+    <v-card>
+        <v-card-title>
+            Category
+        </v-card-title>
+        <v-list density="compact">
+            <v-list-item v-for="(category, i) in categories" :key="i" :value="category"
+                :to="`/category/${category.slug}/page/1`">
+                <v-list-item-title v-text="`${category.name} (${category.post_count})`"></v-list-item-title>
+            </v-list-item>
+        </v-list>
+    </v-card>
 </template>
-
-<style scoped>
-.wrapper {
-    padding: 20px 0;
-}
-
-.pageTitle {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #0d1a3c;
-    background-color: #DBDDDA;
-    padding: 6px 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
-.list {
-    list-style-type: none;
-}
-
-.link {
-    display: block;
-    padding: 10px;
-    color: #888;
-    font-size: 1.4rem;
-}
-</style>

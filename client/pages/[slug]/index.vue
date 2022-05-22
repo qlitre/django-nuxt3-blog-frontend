@@ -33,7 +33,7 @@ useHead({
 </script>
 
 <template>
-  <div class="main">
+  <v-container style="max-width:720px;">
     <PostDetail :post="article" />
-  </div>
+  </v-container>
 </template>

@@ -1,3 +1,9 @@
+export type About = {
+    profile_image: string
+    body: string
+}
+
+
 export type Category = {
     id: string
     name: string
@@ -31,7 +37,7 @@ export type Post = {
 
 export type PostList = Array<Post>
 
-export type PostResponce = {
+export type PostResponse = {
     next: string
     previous: string
     total_pages: number
@@ -40,7 +46,3 @@ export type PostResponce = {
     page_size: number
 }
 
-export type About = {
-    profile_image: string
-    body: string
-}

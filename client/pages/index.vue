@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Category, Tag, CategoryList, TagList, PostResponce } from '../types/blog'
+import { CategoryList, TagList, PostResponse, About } from '../types/blog'
 
 const ctx = useRuntimeConfig();
 const route = useRoute()
@@ -13,17 +13,10 @@ const params = {
     page: page
 }
 
-const { data: posts, refresh } = await useFetch<PostResponce>('/api/postList', { params: params })
+const { data: posts, refresh } = await useFetch<PostResponse>('/api/postList', { params: params })
 const { data: categories } = await useFetch<CategoryList>('/api/categoryList')
 const { data: tags } = await useFetch<TagList>('/api/tagList')
-
-const category: Category =
-    categorySlug !== '' ?
-        categories.value.find((content) => content.slug === categorySlug) : { id: '', name: '', slug: '' };
-
-const tag: Tag =
-    tagSlug !== '' ?
-        tags.value.find((content) => content.slug === tagSlug) : { id: '', name: '', slug: '' };
+const { data: about } = await useFetch<About>(`/api/about`)
 
 useHead({
     title: ctx.siteName,
@@ -45,63 +38,23 @@ useHead({
     ],
 })
 
+watch(() => route.params, () => refresh())
 
 </script>
 
 <template>
-    <v-container>
-        <Breadcrumb :category="category" :tag="tag" />
-        <Posts :posts="posts.results" />
-
-        <Categories :categories="categories" />
-        <Tags :tags="tags" />
+    <v-container class="mt-5">
+        <v-row>
+            <v-col md="8" cols="12" sm="12">
+                <Posts :posts="posts.results" />
+            </v-col>
+            <v-col md="4" cols="12" sm="12">
+                <Categories :categories="categories" />
+                <Tags :tags="tags" class="mt-5" />
+                <AboutMe :about="about" class="mt-5" />
+            </v-col>
+        </v-row>
         <Pagination :totalPages="posts.total_pages" :currentPage="page" :categorySlug="categorySlug"
             :tagSlug="tagSlug" />
-
     </v-container>
 </template>
-
-<style scoped>
-@media (min-width: 1160px) {
-    .divider {
-        display: flex;
-        justify-content: space-between;
-        width: 1080px;
-        margin: 50px auto 0;
-        padding-top: 84px;
-    }
-
-    .container {
-        width: 820px;
-    }
-
-    .aside {
-        width: 300px;
-    }
-}
-
-@media (min-width: 820px) and (max-width: 1160px) {
-    .divider {
-        margin: 20px auto 0;
-        width: 740px;
-        padding-top: 112px;
-    }
-
-    .aside {
-        margin-top: 60px;
-    }
-}
-
-@media (max-width: 820px) {
-    .divider {
-        margin: 20px 0 0;
-        padding: 0 20px;
-        padding-top: 112px;
-    }
-
-    .aside {
-        margin-top: 60px;
-        width: 100%;
-    }
-}
-</style>
