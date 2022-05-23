@@ -23,9 +23,6 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.top {
-  text-align: center;
-}
 .image-area {
   margin-top: 20px;
   text-align: center;
@@ -41,7 +38,7 @@ img {
 
 .markdown-body:deep(*) {
   margin-top: 0;
-  line-height: 1.3;
+  line-height: 1.5;
   font-size: 1rem;
   margin-bottom: 2rem;
 }
@@ -66,10 +63,6 @@ img {
   border-bottom: 1px solid #ccc;
 }
 
-.cp_embed_wrapper {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 .markdown-body:deep(a) {
   text-decoration: none;

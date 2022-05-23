@@ -10,7 +10,7 @@ const props = defineProps({
 
 </script>
 
-    <template>
+<template>
     <v-card>
         <v-card-title>
             Tags
