@@ -11,6 +11,7 @@ export default {
     <v-main class="bg-main">
       <NuxtPage></NuxtPage>
     </v-main>
+    <Footer />
   </v-app>
 </template>
 <style>

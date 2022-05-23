@@ -15,6 +15,7 @@ const props = defineProps<Props>()
 function navigate(p: number) {
     if (props.categorySlug) return navigateTo(`/category/${props.categorySlug}/page/${p}`)
     if (props.tagSlug) return navigateTo(`/tag/${props.tagSlug}/page/${p}`)
+    if (props.keyword) return navigateTo(`/search?q=${props.keyword}&page=${p}`)
     return navigateTo(`/page/${p}`)
 }
 

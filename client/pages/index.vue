@@ -10,7 +10,7 @@ const categorySlug = route.params.categorySlug == undefined ? '' : String(route.
 const params = {
     tagSlug: tagSlug,
     categorySlug: categorySlug,
-    page: page
+    page: page,
 }
 
 const { data: posts, refresh } = await useFetch<PostResponse>('/api/postList', { params: params })
@@ -51,10 +51,11 @@ watch(() => route.params, () => refresh())
             <v-col md="4" cols="12" sm="12">
                 <Categories :categories="categories" />
                 <Tags :tags="tags" class="mt-5" />
-                <AboutMe :about="about" class="mt-5" />
+                <SearchForm class="mt-5" />
+                <AboutMe :about="about" class="mt-4" />
             </v-col>
         </v-row>
-        <Pagination :totalPages="posts.total_pages" :currentPage="page" :categorySlug="categorySlug"
-            :tagSlug="tagSlug" />
+        <Pagination :totalPages="posts.total_pages" :currentPage="page" :categorySlug="categorySlug" :tagSlug="tagSlug"
+            class="mt-5" />
     </v-container>
 </template>
