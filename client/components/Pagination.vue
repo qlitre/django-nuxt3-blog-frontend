@@ -8,7 +8,7 @@ type Props = {
     keyword?: string;
 }
 
-const page = 1
+const page = ref(1)
 
 const props = defineProps<Props>()
 
