@@ -1,33 +1,31 @@
 <script setup lang="ts">
 import { About } from '../types/blog'
+import { PropType } from 'vue';
 
-const { data: about } = await useFetch<About>(`/api/about`)
+const props = defineProps({
+  about: Object as PropType<About>,
+})
+
 </script>
 
 <template>
-  <div class="main">
-    <div class="top">
-      <h1 class="main-title">About</h1>
+  <v-card>
+    <v-card-title>
+      About
+    </v-card-title>
+    <v-card-text>
       <p class="image-area">
         <img :src="about.profile_image" alt="">
       </p>
       <div class="markdown-body" v-html="about.body" style="margin-top:20px;"></div>
-      <TopToButton />
-    </div>
-
-  </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <style scoped>
 .top {
   text-align: center;
 }
-
-.body {
-  margin-top: 50px;
-  text-align: center;
-}
-
 .image-area {
   margin-top: 20px;
   text-align: center;
@@ -41,64 +39,11 @@ img {
   text-align: center;
 }
 
-.main-title {
-  font-size: 3rem;
-  text-align: center;
-}
-
 .markdown-body:deep(*) {
   margin-top: 0;
+  line-height: 1.3;
+  font-size: 1rem;
   margin-bottom: 2rem;
-  line-height: 1.9;
-  font-size: 1.6rem;
-  font-weight: 500;
-}
-
-strong {
-  background-color: yellow;
-}
-
-.markdown-body:deep(img) {
-  display: block;
-  max-width: 100%;
-  margin-top: 20px;
-  margin-bottom: 0px;
-  height: auto;
-  border: solid 1px #ccc;
-}
-
-@media (max-width: 1024px) {
-  .markdown-body:deep(img) {
-    max-width: 100%;
-  }
-}
-
-p:deep(code) {
-  background-color: #eee;
-  color: #333;
-  padding: 0.2em 0.4em;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-pre {
-  line-height: 1.2;
-  background-color: #1D1F21;
-  padding: 2% 4%;
-  overflow-x: scroll;
-}
-
-pre:deep(*) {
-  margin-bottom: 0;
-  line-height: 1.4;
-  font-weight: lighter;
-}
-
-blockquote p {
-  padding: 15px;
-  border-left: 5px solid #ccc;
-  border-radius: 2px;
 }
 
 .markdown-body:deep(h1) {
@@ -127,7 +72,7 @@ blockquote p {
 }
 
 .markdown-body:deep(a) {
-  color: #1266f1;
+  text-decoration: none;
 }
 
 .markdown-body:deep(a:hover) {

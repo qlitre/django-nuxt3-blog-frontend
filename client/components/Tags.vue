@@ -10,43 +10,16 @@ const props = defineProps({
 
 </script>
 
-<template>
-    <div class="wrapper">
-        <h1 class="pageTitle">タグ</h1>
-        <ul>
-            <li v-for="tag in tags" :key="tag.id" class="list">
-                <nuxt-link :to="`/tag/${tag.slug}/page/1`" class="link">
-                    {{ tag.name }} ({{ tag.post_count }})
-                </nuxt-link>
-            </li>
-        </ul>
-    </div>
+    <template>
+    <v-card>
+        <v-card-title>
+            Tags
+        </v-card-title>
+        <v-card-text>
+            <v-chip v-for="(tag, i) in tags" :key="i" :value="tag" :to="`/tag/${tag.slug}/page/1`" class="mt-2 mr-4"
+                color="green" text-color="white">
+                {{ tag.name }} ({{ tag.post_count }})
+            </v-chip>
+        </v-card-text>
+    </v-card>
 </template>
-
-<style scoped>
-.wrapper {
-    padding: 20px 0;
-}
-
-.pageTitle {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #0d1a3c;
-    background-color: #DBDDDA;
-    padding: 6px 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
-
-.list {
-    list-style-type: none;
-}
-
-.link {
-    display: block;
-    padding: 10px;
-    color: #888;
-    font-size: 1.4rem;
-}
-</style>

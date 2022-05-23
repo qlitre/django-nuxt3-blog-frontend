@@ -32,7 +32,7 @@ const body = $.html()
 
 <style scoped>
 .published {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #888;
     margin-right: 20px;
 }
@@ -40,7 +40,7 @@ const body = $.html()
 .title {
     margin-top: 10px;
     margin-bottom: 30px;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     color: #0d1a3c;
     line-height: 1.6;
 }
@@ -56,10 +56,10 @@ const body = $.html()
 /* 記事詳細のマークダウン */
 .markdown-body:deep(*) {
     margin-top: 0;
-    margin-bottom: 2rem;
     line-height: 1.9;
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: 500;
+    margin-bottom: 2rem;
 }
 
 strong {

@@ -11,8 +11,10 @@ export default defineNuxtConfig({
     srcDir: 'client/',
     ssr: true,
     privateRuntimeConfig: {
-        baseUrl: process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:8000' : BASE_URL,
-        apiKey: process.env.NODE_ENV !== 'production' ? API_KEY_DEV : API_KEY,
+        //baseUrl: process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:8000' : BASE_URL,
+        baseUrl: BASE_URL,
+        //apiKey: process.env.NODE_ENV !== 'production' ? API_KEY_DEV : API_KEY,
+        apiKey: API_KEY,
     },
     publicRuntimeConfig: {
         siteUrl: 'https://roaring-gelato-42d6f2.netlify.app',
@@ -22,7 +24,16 @@ export default defineNuxtConfig({
     link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    css: ['@/assets/css/reset.css', '@/assets/css/style.css', '@/assets/css/root.css',],
+    css: ["vuetify/lib/styles/main.sass",],
+    build: {
+        transpile: ["vuetify"],
+    },
+    vite: {
+        define: {
+            "process.env.DEBUG": false,
+        },
+    },
+    //css: ['@/assets/css/reset.css', '@/assets/css/style.css', '@/assets/css/root.css',],
     hooks: {
         'pages:extend'(pages) {
             pages.push({
