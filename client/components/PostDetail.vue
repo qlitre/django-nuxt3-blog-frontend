@@ -90,9 +90,14 @@ pre:deep(*) {
 }
 
 .markdown-body:deep(blockquote) {
+    margin-top: 2rem;
     padding: 15px;
     border-left: 5px solid #ccc;
     border-radius: 2px;
+}
+
+.markdown-body:deep(blockquote) p{
+    margin-bottom:0;
 }
 
 .markdown-body:deep(h1) {
