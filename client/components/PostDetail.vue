@@ -17,7 +17,6 @@ $('pre code').each((_, elm) => {
     $(elm).addClass('hljs');
 });
 
-
 const body = $.html()
 
 </script>
@@ -43,14 +42,6 @@ const body = $.html()
     font-size: 1.8rem;
     color: #0d1a3c;
     line-height: 1.6;
-}
-
-.tag {
-    font-size: 1.4rem;
-    color: 888;
-    opacity: 0.7;
-    letter-spacing: 1px;
-    margin-right: 1rem;
 }
 
 /* 記事詳細のマークダウン */
