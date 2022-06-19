@@ -2,7 +2,6 @@
 import { PropType } from 'vue';
 import { CategoryList } from '../types/blog';
 
-
 const props = defineProps({
     categories: Array as PropType<CategoryList>,
 })
