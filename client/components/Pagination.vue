@@ -8,10 +8,8 @@ type Props = {
     keyword?: string;
 }
 
-
 const props = defineProps<Props>()
 const page = ref(props.currentPage)
-
 
 function navigate(p: number) {
     if (props.categorySlug) return navigateTo(`/category/${props.categorySlug}/page/${p}`)
